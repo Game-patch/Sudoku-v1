@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome CDN link -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="sudoku-container">
+        <h1>Sudoku Game</h1>
+        <p id="timer">Time: 0:00</p>  
+        <div id="level-display">Level: 1</div>
+        <table id="sudoku-grid"></table>
+        <div id="moves-display">Moves: 0</div>
+
+        <button id="check-solution" onclick="checkSolution()">
+            <i class="fas fa-check"></i> Check Solution
+        </button>
+        <button id="hint-button" onclick="provideHint()">
+            <i class="fas fa-lightbulb"></i> Hint
+        </button>
+        <button onclick="undo()">
+            <i class="fas fa-undo"></i> Undo
+        </button>
+    </div>
+
+
+   
+      
+    <script src="script.js"></script>
+</body>
+</html>

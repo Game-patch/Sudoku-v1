@@ -1,0 +1,256 @@
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #121212; /* Dark background */
+    color: #FFD700; /* Yellow text */
+}
+
+/* Main container */
+.sudoku-container {
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark container */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px; /* Increased max width to accommodate 12x12 grid */
+    margin: 20px;
+}
+
+/* Title and timer */
+h1,
+#timer {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #FFD700;
+}
+
+/* Sudoku table */
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 100%;
+    table-layout: fixed; /* Ensures the table cells are evenly distributed */
+}
+
+/* Table cells */
+td {
+    width: calc(100% / 12); /* Ensure each cell takes up 1/12th of the table's width */
+    height: 40px; /* Adjust height for better alignment */
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #444;
+    background-color: #2b2b2b;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Thicker borders for subgrids (4x3 grid for 12x12 Sudoku) */
+td.subgrid-border {
+    border-width: 2px;
+}
+
+/* Input fields */
+input {
+    width: 90%; /* Ensure input field takes up most of the cell width */
+    height: 90%; /* Ensure input field takes up most of the cell height */
+    text-align: center;
+    font-size: 18px;
+    background-color: #333;
+    color: #FFD700;
+    border: 1px solid #FFD700;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+/* Input focus */
+input:focus {
+    outline: none;
+    background-color: #222;
+    border: 2px solid #FFD700;
+}
+
+/* Correct input highlight */
+input.correct {
+    background-color: #2e7d32; /* Green */
+    color: #ffffff;
+}
+
+/* Incorrect input highlight */
+input.incorrect {
+    background-color: #c62828; /* Red */
+    color: #ffffff;
+}
+
+/* Buttons general */
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #FFD700;
+    border: 1px solid #FFD700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    width: 120px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Special hint button */
+button#hint-button {
+    background-color: #FF5722;
+    color: #fff;
+    border: none;
+}
+
+/* Hover effects */
+button:hover {
+    background-color: #444;
+}
+
+/* Hover on hint button */
+button#hint-button:hover {
+    background-color: #FF3D00;
+}
+
+/* Disabled buttons */
+button:disabled {
+    background-color: #555;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Remove focus outline on button */
+button:focus {
+    outline: none;
+}
+
+/* Responsive design for mobile screens with Dark Mode */
+@media (max-width: 600px) {
+    body {
+        background-color: #121212; /* Dark mode background for mobile */
+        color: #FFD700; /* Yellow text on dark mode */
+    }
+
+    .sudoku-container {
+        padding: 15px;
+        width: 100%;
+        background-color: #1e1e1e; /* Dark container for mobile */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Light shadow for contrast */
+    }
+
+    h1 {
+        font-size: 20px;
+        color: #FFD700; /* Yellow text for the title */
+    }
+
+    td {
+        width: calc(100% / 6); /* Adjust cell width for mobile screens */
+        height: 35px; /* Smaller height for smaller screen */
+        background-color: #2b2b2b; /* Dark background for cells */
+    }
+
+    input {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        background-color: #4caf50; /* Green background for input */
+        color: #ffffff;
+        border: 1px solid #388e3c; /* Green border */
+    }
+
+    input:focus {
+        background-color: #81c784; /* Lighter green on focus */
+        border: 2px solid #388e3c; /* Darker green border on focus */
+    }
+
+    button {
+        width: 100%;
+        font-size: 14px;
+        background-color: #4caf50; /* Green background for button */
+        color: #ffffff;
+        border: none;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #388e3c; /* Darker green on hover */
+    }
+
+    button#hint-button {
+        background-color: #0288d1; /* Blue hint button */
+        color: #ffffff;
+    }
+
+    button#hint-button:hover {
+        background-color: #0277bd; /* Darker blue on hover */
+    }
+}
+
+/* Responsive design for tablet screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        background-color: #121212; /* Dark background for tablet */
+        color: #FFD700; /* Yellow text */
+    }
+
+    .sudoku-container {
+        padding: 20px;
+        width: 80%;
+        background-color: #1e1e1e; /* Dark container for tablet */
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Light shadow for contrast */
+    }
+
+    h1 {
+        font-size: 22px;
+        color: #FFD700; /* Yellow text for title */
+    }
+
+    td {
+        width: calc(100% / 8); /* Adjust cell width for tablet screens */
+        height: 50px; /* Medium height for better visibility */
+        background-color: #2b2b2b; /* Dark background for cells */
+    }
+
+    input {
+        width: 80%;
+        height: 80%;
+        font-size: 16px;
+        background-color: #673ab7; /* Purple background for input */
+        color: #ffffff;
+        border: 1px solid #9c27b0; /* Violet border */
+    }
+
+    input:focus {
+        background-color: #9575cd; /* Lighter purple on focus */
+        border: 2px solid #9c27b0; /* Violet border on focus */
+    }
+
+    button {
+        width: 120px;
+        font-size: 16px;
+        background-color: #673ab7; /* Purple background for button */
+        color: #ffffff;
+        border: 1px solid #9c27b0; /* Violet border */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+        background-color: #512da8; /* Darker purple on hover */
+    }
+
+    button#hint-button {
+        background-color: #9c27b0; /* Violet hint button */
+        color: #ffffff;
+    }
+
+    button#hint-button:hover {
+        background-color: #7b1fa2; /* Darker violet on hover */
+    }
+}
+
