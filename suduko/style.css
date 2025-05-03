@@ -1,4 +1,10 @@
-/* Basic body styling */
+/* ===== Reset & Smooth Transitions ===== */
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* ===== Base Styling (Dark Mode Default) ===== */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -6,251 +12,407 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #121212; /* Dark background */
-    color: #FFD700; /* Yellow text */
-}
-
-/* Main container */
-.sudoku-container {
-    text-align: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    background-color: #1e1e1e; /* Dark container */
-    border-radius: 10px;
-    width: 100%;
-    max-width: 1000px; /* Increased max width to accommodate 12x12 grid */
-    margin: 20px;
-}
-
-/* Title and timer */
-h1,
-#timer {
-    margin-bottom: 20px;
-    font-size: 24px;
+    background-color: #121212;
     color: #FFD700;
 }
 
-/* Sudoku table */
+.sudoku-container {
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+    padding: 24px;
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px;
+}
+
+/* ===== Header ===== */
+h1, #timer {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #FFD700;
+}
+
+/* ===== Sudoku Table Styling ===== */
 table {
     border-spacing: 0;
     border-collapse: collapse;
-    margin-bottom: 20px;
     width: 100%;
-    table-layout: fixed; /* Ensures the table cells are evenly distributed */
+    table-layout: fixed;
+    margin-bottom: 20px;
 }
 
-/* Table cells */
 td {
-    width: calc(100% / 12); /* Ensure each cell takes up 1/12th of the table's width */
-    height: 40px; /* Adjust height for better alignment */
+    width: calc(100% / 12); /* 12 columns for desktop */
+    height: 60px;
     text-align: center;
     vertical-align: middle;
     border: 1px solid #444;
-    background-color: #2b2b2b;
-    transition: background-color 0.3s, border-color 0.3s;
+    background-color: #2a2a2a;
+    color: #FFD700;
+    border-radius: 6px;
+    transition: background-color 0.3s, box-shadow 0.2s;
 }
 
-/* Thicker borders for subgrids (4x3 grid for 12x12 Sudoku) */
-td.subgrid-border {
-    border-width: 2px;
+/* ===== Bi-color Grid (Checkerboard Effect) ===== */
+table tr:nth-child(even) td:nth-child(odd),
+table tr:nth-child(odd) td:nth-child(even) {
+    background-color: #353535;
 }
 
-/* Input fields */
+/* ===== Hover Effect for Grid Cells ===== */
+td:hover {
+    background-color: #444444;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+/* ===== Grid Cells for Correct and Incorrect Inputs ===== */
+td input.correct {
+    background-color: #2e7d32;
+    color: #ffffff;
+    border-color: #388e3c;
+}
+
+td input.incorrect {
+    background-color: #c62828;
+    color: #ffffff;
+    border-color: #d32f2f;
+}
+
+/* ===== Input Fields ===== */
 input {
-    width: 90%; /* Ensure input field takes up most of the cell width */
-    height: 90%; /* Ensure input field takes up most of the cell height */
+    width: 90%;
+    height: 90%;
     text-align: center;
     font-size: 18px;
     background-color: #333;
     color: #FFD700;
     border: 1px solid #FFD700;
-    border-radius: 5px;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    border-radius: 10px;
 }
 
-/* Input focus */
 input:focus {
     outline: none;
-    background-color: #222;
+    background-color: #1f1f1f;
     border: 2px solid #FFD700;
+    box-shadow: 0 0 10px #FFD700;
 }
 
-/* Correct input highlight */
 input.correct {
-    background-color: #2e7d32; /* Green */
+    background-color: #2e7d32;
     color: #ffffff;
 }
 
-/* Incorrect input highlight */
 input.incorrect {
-    background-color: #c62828; /* Red */
+    background-color: #c62828;
     color: #ffffff;
 }
 
-/* Buttons general */
+/* ===== Buttons ===== */
 button {
-    padding: 10px 20px;
-    background-color: #333;
+    padding: 12px 20px;
+    background: linear-gradient(to right, #2c2c2c, #1e1e1e);
     color: #FFD700;
-    border: 1px solid #FFD700;
-    border-radius: 5px;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
     cursor: pointer;
-    margin-top: 10px;
     font-size: 16px;
-    width: 120px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: bold;
+    width: 100%;
+    max-width: 180px;
+    margin: 10px auto;
+    display: block;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
-/* Special hint button */
-button#hint-button {
-    background-color: #FF5722;
-    color: #fff;
-    border: none;
-}
-
-/* Hover effects */
 button:hover {
-    background-color: #444;
+    background: linear-gradient(to right, #444, #222);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    color: #fff;
 }
 
-/* Hover on hint button */
-button#hint-button:hover {
-    background-color: #FF3D00;
-}
-
-/* Disabled buttons */
 button:disabled {
-    background-color: #555;
+    background: #555;
+    border-color: #999;
     color: #999;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
-/* Remove focus outline on button */
 button:focus {
     outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.4);
 }
 
-/* Responsive design for mobile screens with Dark Mode */
+/* ===== Special Button: Hint ===== */
+button#hint-button {
+    background: linear-gradient(to right, #00bfa5, #00695c);
+    color: #fff;
+    border: 2px solid #26c6da;
+}
+
+button#hint-button:hover {
+    background: linear-gradient(to right, #00897b, #004d40);
+    box-shadow: 0 4px 12px rgba(38, 198, 218, 0.3);
+}
+
+/* ===== Button Group Layout ===== */
+.pc-button-layout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.pc-button-layout button {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* ===== Hint Status ===== */
+.hint-status {
+    font-size: 14px;
+    background: #333;
+    color: #FFD700;
+    padding: 4px 10px;
+    border: 1px solid #FFD700;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+#hint-status-display {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #FFD700;
+}
+
+/* ===== Mobile Styling (<=600px) ===== */
 @media (max-width: 600px) {
     body {
-        background-color: #121212; /* Dark mode background for mobile */
-        color: #FFD700; /* Yellow text on dark mode */
-    }
-
-    .sudoku-container {
-        padding: 15px;
-        width: 100%;
-        background-color: #1e1e1e; /* Dark container for mobile */
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Light shadow for contrast */
-    }
-
-    h1 {
-        font-size: 20px;
-        color: #FFD700; /* Yellow text for the title */
+        background-color: #1c1c1c;
     }
 
     td {
-        width: calc(100% / 6); /* Adjust cell width for mobile screens */
-        height: 35px; /* Smaller height for smaller screen */
-        background-color: #2b2b2b; /* Dark background for cells */
+        width: calc(100% / 6); /* 6 columns on mobile */
+        height: 40px;
+        background-color: #303030;
+        border: 1px solid #ffa726;
+        color: #ffca28;
+    }
+
+    table tr:nth-child(even) td:nth-child(odd),
+    table tr:nth-child(odd) td:nth-child(even) {
+        background-color: #333;
+    }
+
+    td:hover {
+        background-color: #444;
+        box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
     }
 
     input {
+        font-size: 14px;
         width: 30px;
         height: 30px;
-        font-size: 14px;
-        background-color: #4caf50; /* Green background for input */
-        color: #ffffff;
-        border: 1px solid #388e3c; /* Green border */
-    }
-
-    input:focus {
-        background-color: #81c784; /* Lighter green on focus */
-        border: 2px solid #388e3c; /* Darker green border on focus */
     }
 
     button {
         width: 100%;
         font-size: 14px;
-        background-color: #4caf50; /* Green background for button */
-        color: #ffffff;
-        border: none;
-        transition: background-color 0.3s, border-color 0.3s;
+        background-color: #2e2e2e;
+        color: #ffca28;
+        border: 1px solid #ff9800;
     }
 
     button:hover {
-        background-color: #388e3c; /* Darker green on hover */
+        background-color: #3e3e3e;
+        border-color: #ffc107;
+        color: #fff;
     }
 
     button#hint-button {
-        background-color: #0288d1; /* Blue hint button */
-        color: #ffffff;
+        background-color: #f06292;
+        border-color: #ec407a;
     }
 
     button#hint-button:hover {
-        background-color: #0277bd; /* Darker blue on hover */
+        background-color: #e91e63;
+        border-color: #d81b60;
     }
 }
 
-/* Responsive design for tablet screens */
+/* ===== Tablet Styling (601px–1024px) ===== */
 @media (min-width: 601px) and (max-width: 1024px) {
     body {
-        background-color: #121212; /* Dark background for tablet */
-        color: #FFD700; /* Yellow text */
-    }
-
-    .sudoku-container {
-        padding: 20px;
-        width: 80%;
-        background-color: #1e1e1e; /* Dark container for tablet */
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Light shadow for contrast */
-    }
-
-    h1 {
-        font-size: 22px;
-        color: #FFD700; /* Yellow text for title */
+        background-color: #1e1a2b;
     }
 
     td {
-        width: calc(100% / 8); /* Adjust cell width for tablet screens */
-        height: 50px; /* Medium height for better visibility */
-        background-color: #2b2b2b; /* Dark background for cells */
+        width: calc(100% / 8); /* 8 columns on tablet */
+        height: 50px;
+        background-color: #3a2e50;
+        border: 1px solid #9575cd;
+        color: #ce93d8;
+    }
+
+    table tr:nth-child(even) td:nth-child(odd),
+    table tr:nth-child(odd) td:nth-child(even) {
+        background-color: #442c5e;
+    }
+
+    td:hover {
+        background-color: #4a3d60;
+        box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
     }
 
     input {
-        width: 80%;
-        height: 80%;
         font-size: 16px;
-        background-color: #673ab7; /* Purple background for input */
-        color: #ffffff;
-        border: 1px solid #9c27b0; /* Violet border */
-    }
-
-    input:focus {
-        background-color: #9575cd; /* Lighter purple on focus */
-        border: 2px solid #9c27b0; /* Violet border on focus */
+        width: 50px;
+        height: 50px;
     }
 
     button {
         width: 120px;
         font-size: 16px;
-        background-color: #673ab7; /* Purple background for button */
-        color: #ffffff;
-        border: 1px solid #9c27b0; /* Violet border */
-        transition: background-color 0.3s, color 0.3s;
+        background-color: #3c2e50;
+        color: #ce93d8;
+        border: 1px solid #9575cd;
     }
 
     button:hover {
-        background-color: #512da8; /* Darker purple on hover */
+        background-color: #4e3b66;
+        border-color: #7e57c2;
+        color: #fff;
     }
 
     button#hint-button {
-        background-color: #9c27b0; /* Violet hint button */
-        color: #ffffff;
+        background-color: #4db6ac;
+        border-color: #26a69a;
+        color: #fff;
     }
 
     button#hint-button:hover {
-        background-color: #7b1fa2; /* Darker violet on hover */
+        background-color: #009688;
+        border-color: #00796b;
     }
 }
 
+/* ===== Desktop Styling (Default) ===== */
+@media (min-width: 1025px) {
+    td {
+        width: calc(100% / 12); /* 12 columns on desktop */
+        height: 60px;
+        background-color: #2a2a2a;
+        border: 1px solid #444;
+        color: #FFD700;
+    }
+
+    table tr:nth-child(even) td:nth-child(odd),
+    table tr:nth-child(odd) td:nth-child(even) {
+        background-color: #353535;
+    }
+
+    td:hover {
+        background-color: #444;
+        box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+    }
+
+    input {
+        font-size: 18px;
+        width: 50px;
+        height: 50px;
+    }
+
+    button {
+        width: 180px;
+        font-size: 18px;
+        background-color: #2c2c2c;
+        color: #FFD700;
+        border: 2px solid #FFD700;
+    }
+
+    button:hover {
+        background-color: #444;
+        color: #fff;
+        border-color: #ff9800;
+    }
+}
+
+
+
+
+/* ===== Moves Display ===== */
+#moves-display {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFD700; /* Golden text color */
+    margin-top: 20px;
+    text-align: center;
+    background-color: #2a2a2a;
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    display: inline-block;
+}
+
+/* ===== Hint Used Display ===== */
+#hint-status-display {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFD700; /* Golden text color */
+    margin-top: 10px;
+    text-align: center;
+    background-color: #2a2a2a;
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    display: inline-block;
+}
+
+/* Hover effect for hint status display */
+#hint-status-display:hover {
+    background-color: #444;
+}
+
+/* ===== Hint Text Styling ===== */
+#hint-text {
+    font-size: 16px;
+    color: #FFD700; /* Same golden color as "Moves" */
+}
+
+/* ===== Check Solution Message ===== */
+.check-solution-message {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+    opacity: 1; /* Initially visible */
+    transition: opacity 0.5s ease; /* Smooth fade-out effect */
+    white-space: nowrap; /* Ensure message text does not wrap */
+}
+
+/* Optional: Add some transitions or animations */
+@keyframes slideIn {
+    from {
+        top: -10%;
+        opacity: 0;
+    }
+    to {
+        top: 20%;
+        opacity: 1;
+    }
+}
+
+/* Applying the slideIn animation to the message */
+.check-solution-message {
+    animation: slideIn 0.5s ease-out;
+}
