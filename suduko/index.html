@@ -16,21 +16,31 @@
         <div id="level-display">Level: 1</div>
         <table id="sudoku-grid"></table>
         <div id="moves-display">Moves: 0</div>
-
-        <button id="check-solution" onclick="checkSolution()">
-            <i class="fas fa-check"></i> Check Solution
-        </button>
-        <button id="hint-button" onclick="provideHint()">
-            <i class="fas fa-lightbulb"></i> Hint
-        </button>
-        <button onclick="undo()">
-            <i class="fas fa-undo"></i> Undo
-        </button>
+    
+        <!-- Hint status text displayed above the hint button -->
+        <div id="hint-status-display">
+            <span id="hint-text">Hint Used: 0</span>
+        </div>
+    
+        <!-- Button Layout -->
+        <div class="pc-button-layout">
+            <button id="hint-button" onclick="provideHint()">
+                <i class="fas fa-lightbulb"></i> Hint
+            </button>
+        
+            <button class="btn-reset" onclick="resetGrid()">
+                <i class="fas fa-sync-alt"></i> Reset
+            </button>
+            <button class="btn-check-solution" onclick="checkSolution()">
+                <i class="fas fa-check"></i> Check Solution
+            </button>
+            <button class="btn-undo" onclick="undo()">
+                <i class="fas fa-undo"></i> Undo
+            </button>
+        </div>
     </div>
-
-
-   
-      
+    
+    
     <script src="script.js"></script>
 </body>
 </html>
