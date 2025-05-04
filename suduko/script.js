@@ -315,7 +315,7 @@ function showRules() {
 ⏱️ Timer keeps track of your progress – beat your previous best!
 🚫 No pencil marks – only final numbers allowed in the grid.`;
 
-    // Style the alert box
+    // Base styles
     Object.assign(alertBox.style, {
         position: 'fixed',
         top: '20%',
@@ -323,15 +323,26 @@ function showRules() {
         transform: 'translate(-50%, -50%)',
         backgroundColor: '#000',
         color: '#fff',
-        padding: '20px',
+        padding: '16px',
         border: '2px solid #444',
         borderRadius: '12px',
         boxShadow: '0 0 15px rgba(255,255,255,0.2)',
         zIndex: 1000,
         whiteSpace: 'pre-line',
         opacity: '0',
-        transition: 'opacity 0.5s ease'
+        transition: 'opacity 0.5s ease',
+        fontSize: '1rem',
+        maxWidth: '90vw',
+        width: '400px',
+        textAlign: 'left',
+        boxSizing: 'border-box',
     });
+
+    // Responsive tweak: reduce font size on small screens
+    if (window.innerWidth < 480) {
+        alertBox.style.fontSize = '0.9rem';
+        alertBox.style.padding = '12px';
+    }
 
     document.body.appendChild(alertBox);
 
@@ -348,7 +359,6 @@ function showRules() {
         }, 500);
     }, 1500);
 }
-
 
 // Enforce Color Sudoku rules (no repeats in any row, column, or subgrid)
 function enforceColorRules(grid) {
