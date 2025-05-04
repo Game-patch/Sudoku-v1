@@ -416,3 +416,28 @@ button#hint-button:hover {
 .check-solution-message {
     animation: slideIn 0.5s ease-out;
 }
+
+
+/* Default icon size (for larger screens) */
+.icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* For tablets (between 600px and 1024px) */
+@media (max-width: 1024px) {
+    .icon {
+        width: 20px;  /* Adjust the size for tablet */
+        height: 20px;
+    }
+}
+
+/* For mobile (below 600px) */
+@media (max-width: 600px) {
+    .icon {
+        width: 16px;  /* Adjust the size for mobile */
+        height: 16px;
+    }
+}
