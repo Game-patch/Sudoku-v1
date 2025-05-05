@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Tagesschrift", system-ui;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark gradient */
   display: flex;
   justify-content: center;
