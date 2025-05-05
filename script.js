@@ -17,3 +17,12 @@ function startGame() {
     hideLoader();
   };
   
+   // Disable right-click globally
+   document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+   // Disable text selection
+   document.addEventListener('selectstart', function (e) {
+    e.preventDefault();
+  });
