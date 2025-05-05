@@ -17,3 +17,7 @@ function startGame() {
     hideLoader();
   };
   
+   // Disable right-click globally
+   document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
