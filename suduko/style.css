@@ -471,8 +471,8 @@ button#hint-button:hover {
   padding: 1.25em;
   width: 90vw;
   max-width: 400px;
-  background: #000; /* black background */
-  color: #fff; /* white text */
+  background: #000; /* Black background */
+  color: #fff; /* White text */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
