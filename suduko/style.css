@@ -468,16 +468,17 @@ button#hint-button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 1em;
-  max-width: 90vw;
-  width: 400px;
+  padding: 1.25em;
+  width: 90vw;
+  max-width: 400px;
   background: #000; /* black background */
   color: #fff; /* white text */
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   display: none;
   z-index: 1000;
+  font-size: 1rem;
 }
 
 #customHintModal.show {
@@ -486,12 +487,12 @@ button#hint-button:hover {
 
 #customHintModalBody {
   font-size: 1rem;
+  line-height: 1.5;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   #customHintModal {
-    width: 90%;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     padding: 1em;
   }
 
@@ -500,3 +501,13 @@ button#hint-button:hover {
   }
 }
 
+@media (max-width: 480px) {
+  #customHintModal {
+    font-size: 0.9rem;
+    padding: 0.85em;
+  }
+
+  #customHintModalBody {
+    font-size: 0.9rem;
+  }
+}
