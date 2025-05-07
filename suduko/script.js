@@ -424,12 +424,22 @@ function showCustomModal() {
 function restartPuzzle() {
   level = 1;
   hintUsed = 0;
-
   moves = 0;
-  maxMoves = 25; // Reset max moves for restart
-  document.getElementById("moves-display").textContent = `Moves: ${moves}`; // Reset moves display
+  maxMoves = 25;
+
+  // Update moves display
+  const movesDisplay = document.getElementById("moves-display");
+  if (movesDisplay) {
+    movesDisplay.textContent = `Moves: ${moves}`;
+  }
+
+  // Enable the hint button safely
+  const hintButton = document.getElementById("hint-button");
+  if (hintButton) {
+    hintButton.disabled = false;
+  }
+
   generateGrid(50); // Default difficulty for restart
-  document.getElementById("hint-button").disabled = false;
   stopTimer();
   startTimer();
 }
