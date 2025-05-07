@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sudoku Game</title>
-    <link href="style.css" rel="stylesheet">
-</head>
+    <link href="style.css" rel="stylesheet" />
+  </head>
 
-<body>
-
+  <body>
     <div class="sudoku-container">
-        <h1>Sudoku Game</h1>
+      <h1>Sudoku Game</h1>
 
-        <!-- Info Bar with Timer and Level -->
-        <div class="info-bar">
-            <div class="info-item" id="timer">
-                <!-- Custom Icon for Timer -->
-                <img class="icon" src="icons/clock.png" alt="Timer Icon"> <span id="time-text">Time: 0:00</span>
-            </div>
-            
-            <div class="info-item" id="level-display">
-                <!-- Custom Icon for Level -->
-                <img class="icon" src="icons/level-up.png" alt="Level Icon"> <span id="level-text">Level: 1</span>
-            </div>
+      <!-- Info Bar with Timer and Level -->
+      <div class="info-bar">
+        <div class="info-item" id="timer">
+          <!-- Custom Icon for Timer -->
+          <img class="icon" src="icons/clock.png" alt="Timer Icon" />
+          <span id="time-text">Time: 0:00</span>
         </div>
 
-        <!-- Sudoku Grid -->
-        <table id="sudoku-grid"></table>
-
-        <!-- Moves Display -->
-        <div id="moves-display">Moves: 0</div>
-
-        <!-- Hint status text displayed above the hint button -->
-        <div id="hint-status-display">
-            <span id="hint-text">Hint Used: 0</span>
+        <div class="info-item" id="level-display">
+          <!-- Custom Icon for Level -->
+          <img class="icon" src="icons/level-up.png" alt="Level Icon" />
+          <span id="level-text">Level: 1</span>
         </div>
+      </div>
 
-        <!-- Button Layout -->
-        <div class="pc-button-layout">
-            <!-- Custom Hint Button Icon -->
-            <button id="hint-status-display" onclick="provideHint()">
-                <img class="icon" src="icons/hint.png" alt="Hint Icon"> Hint
-            </button>
+      <!-- Sudoku Grid -->
+      <table id="sudoku-grid"></table>
 
-            <!-- Custom Reset Button Icon -->
-            <button onclick="restartPuzzle()">
-                <img class="icon" src="icons/circular.png" alt="Reset Icon"> Reset
-            </button>
+      <!-- Moves Display -->
+      <div id="moves-display">Moves: 0</div>
 
-            <!-- Custom Check Solution Button Icon -->
-            <button class="btn-check-solution" onclick="checkSolution()">
-                <img class="icon" src="icons/check.png" alt="Check Icon"> Check Solution
-            </button>
-        </div>
+      <!-- Hint status text displayed above the hint button -->
+      <div id="hint-status-display">
+        <span id="hint-buttom">Hint Used: 0</span>
+      </div>
+
+      <!-- Button Layout -->
+      <div class="pc-button-layout">
+        <!-- Custom Hint Button Icon -->
+        <button id="hint-status-display" onclick="provideHint()">
+          <img class="icon" src="icons/hint.png" alt="Hint Icon" /> Hint
+        </button>
+
+        <!-- Custom Reset Button Icon -->
+        <button onclick="restartPuzzle()">
+          <img class="icon" src="icons/circular.png" alt="Reset Icon" /> Reset
+        </button>
+
+        <!-- Custom Check Solution Button Icon -->
+        <button class="btn-check-solution" onclick="checkSolution()">
+          <img class="icon" src="icons/check.png" alt="Check Icon" /> Check
+          Solution
+        </button>
+      </div>
     </div>
 
     <!-- Link to script.js at the end of the body -->
     <script src="script.js"></script>
-
-</body>
-
+    <script src="restrict.js"></script>
+  </body>
 </html>
