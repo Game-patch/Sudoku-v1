@@ -462,3 +462,83 @@ button#hint-button:hover {
   }
 }
 
+/* Modal styles */
+/* Modal styles */
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scrolling if the content is too big */
+  background-color: rgba(0, 0, 0, 0.7); /* Darker black with opacity */
+  padding-top: 60px;
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for fade-in */
+  opacity: 0; /* Hidden by default */
+}
+
+/* Modal content styles */
+.modal-content {
+  background-color: #f7c600; /* Yellow background */
+  color: #333; /* Dark text for contrast */
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px; /* Rounded corners for smoothness */
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Smooth scale and width change */
+  transform: scale(0.9); /* Start small, scale up */
+}
+
+/* Close button */
+.close {
+  color: #333;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Modal fade-in and fade-out */
+.modal.show {
+  display: block;
+  opacity: 1; /* Fade in */
+}
+
+.modal-content.show {
+  transform: scale(1); /* Smooth scaling effect when shown */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Adjust width for tablets */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 95%; /* Adjust width for small screens (mobile) */
+  }
+  
+  .close {
+    font-size: 24px; /* Smaller close button on mobile */
+  }
+}
+
+/* Smooth transition when resizing modal on smaller screens */
+@media screen and (max-width: 500px) {
+  .modal-content {
+    width: 98%; /* Further adjust width for very small screens */
+  }
+}
