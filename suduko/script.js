@@ -220,6 +220,11 @@ document.addEventListener("keydown", function (e) {
         next.focus();
         selectedCell = next;
         smoothFocus(next);
+
+        // Play sound effect when moving
+        const moveSound = new Audio("cklickeff.mp3"); // Replace with your sound file path
+        moveSound.play();
+
         break;
       }
       r += dr;
@@ -245,6 +250,10 @@ document.addEventListener("keydown", function (e) {
       if (/^[1-9]$/.test(e.key) && !selectedCell.disabled) {
         selectedCell.value = e.key;
         selectedCell.dispatchEvent(new Event("input"));
+
+        // Play sound effect when a number is entered
+        const numberInputSound = new Audio("input.mp3"); // Replace with your sound file path
+        numberInputSound.play();
       }
       return;
   }
@@ -305,6 +314,10 @@ function checkSolution() {
   const inputs = document.querySelectorAll("input");
   let isCorrect = true;
 
+  // Sounds for correct and incorrect solutions
+  //const correctSound = new Audio("corect.mp3"); // Replace with your correct sound file path
+  const incorrectSound = new Audio("incorrect.mp3"); // Replace with your incorrect sound file path
+
   for (let i = 0; i < gridSize * gridSize; i++) {
     const row = Math.floor(i / gridSize);
     const col = i % gridSize;
@@ -330,6 +343,10 @@ function checkSolution() {
   // Check if the solution is correct
   if (isCorrect) {
     stopTimer();
+
+    // Play correct sound
+    correctSound.play();
+
     alert("🎉 Congratulations! Level " + level + " complete.");
     level++;
     moves = 0; // Reset moves
@@ -340,6 +357,9 @@ function checkSolution() {
     // Reset hints every 5 levels
     resetHintsForNextLevel();
   } else {
+    // Play incorrect sound
+    incorrectSound.play();
+
     alert("❌ There are some mistakes. Try again!");
   }
 }
@@ -355,6 +375,9 @@ const NO_EMPTY_CELLS_MESSAGE = "🎉 No empty cells left to hint!";
 
 let hintLimitReachedShown = false; // To prevent showing the hint limit message multiple times
 
+// Sound for when the hint limit is reached
+const hintLimitSound = new Audio("hint-limit-sound.mp3"); // Replace with your sound file path
+
 function provideHint() {
   const hintButton = document.getElementById("hint-button");
 
@@ -362,6 +385,9 @@ function provideHint() {
     if (!hintLimitReachedShown) {
       showHintModal(MAX_HINTS_MESSAGE);
       hintLimitReachedShown = true;
+
+      // Play sound when the hint limit is reached
+      hintLimitSound.play();
     }
     return;
   }
@@ -393,7 +419,7 @@ function provideHint() {
       hintText.textContent = `Hint Used: ${hintUsed}`;
     }
 
-    // Update the hint status display (hint-buttom)
+    // Update the hint status display (hint-button)
     const hintStatusDisplay = document.getElementById("hint-buttom");
     if (hintStatusDisplay) {
       hintStatusDisplay.textContent = `Hint Used: ${hintUsed}`;
