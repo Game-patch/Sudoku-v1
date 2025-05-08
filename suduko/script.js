@@ -579,6 +579,58 @@ function enforceColorRules(grid) {
   }
 }
 
+// Add event listener for the rules button
+// JavaScript
+
+// Create the audio object
+const music = new Audio("relaxing.mp3");
+music.loop = true;
+music.volume = 0.5;
+
+let relaxingMode = false;
+let idleTime = 0;
+let lastUpdateTime = Date.now();
+
+// Update visuals and audio balance
+function updateMusicAndBackground() {
+  if (!relaxingMode) return;
+
+  const now = Date.now();
+  const deltaTime = (now - lastUpdateTime) / 1000; // in seconds
+  lastUpdateTime = now;
+
+  idleTime += deltaTime;
+
+  // Gradually reduce volume after 5 minutes
+  if (idleTime > 300 && music.volume > 0) {
+    music.volume = Math.max(0, music.volume - 0.005 * deltaTime); // smooth fade-out
+  }
+
+  // Gradually darken background
+  requestAnimationFrame(updateMusicAndBackground); // smooth loop
+}
+
+// Activate relaxing mode
+function startRelaxingMode() {
+  if (relaxingMode) return;
+  relaxingMode = true;
+  idleTime = 0;
+  lastUpdateTime = Date.now();
+
+  music.play().catch((err) => {
+    console.warn("Autoplay blocked:", err);
+    alert("Tap to enable relaxing mode."); // fallback alert for mobile
+  });
+
+  document.body.classList.add("relaxing-mode");
+  requestAnimationFrame(updateMusicAndBackground);
+}
+
+// One-time activation on user interaction (click or touch)
+["click", "touchstart"].forEach((event) =>
+  window.addEventListener(event, startRelaxingMode, { once: true })
+);
+
 // Start the game
 
 solvedGrid = generateSolvedGrid();
